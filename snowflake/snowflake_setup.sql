@@ -1,0 +1,2 @@
+-- Database and Table Creations
+CREATE DATABASE IF NOT EXISTS ZOPHIAFLIX;
