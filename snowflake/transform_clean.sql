@@ -5,13 +5,9 @@ SELECT
         WHEN regexp_count(dispositivo, 'Mozilla|Macintosh|Opera')>0 then 'Desktop'
         WHEN contains(dispositivo, 'iPad') then 'Tablet'
         ELSE 'Unknown'
-    END identificador,
-    CASE 
-        WHEN regexp_count(dispositivo,'(Mobile|iP(hone|od|ad)|Android|Linux)')>0 then regexp_extract_all(dispositivo, '(Mobile|iP(hone|od|ad)|Android|Linux)')
-        ELSE array_construct(dispositivo)
-    END identificador_1,
-    regexp_substr(dispositivo, '^[A-Za-z]+',1) as identificador_2
-FROM zophiaflix_logs;
+    END identificador    
+FROM zophiaflix_logs
+LIMIT 10;
 
 SELECT
         CAST(fecha as DATE) AS view_date,
@@ -49,6 +45,5 @@ SELECT
         countryname as country_name,
         _airbyte_ab_id as airbyte_ab_id,
         _airbyte_emitted_at as airbyte_loaded_at
-  FROM ip_location LIMIT 10;
+  FROM ip_location LIMIT 10; 
   
-  --Hace falta limpiar y estandarizar catalogo pais y zophiaflix catalogo

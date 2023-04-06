@@ -1,6 +1,8 @@
 -- Database and Table Creations
 CREATE DATABASE IF NOT EXISTS ZOPHIAFLIX;
 
+USE ZOPHIAFLIX;
+
 CREATE OR REPLACE TABLE public.zophiaflix_logs (
     ip VARCHAR(20) NOT NULL,
     fecha VARCHAR(50) NOT NULL,
@@ -14,6 +16,7 @@ CREATE OR REPLACE TABLE public.zophiaflix_logs (
     _airbyte_ab_id VARCHAR(60),
     _airbyte_emitted_at TIMESTAMP_LTZ
 	);
+
 
 CREATE OR REPLACE TABLE public.zophiaflix_catalogo (
 	zfid INT NOT NULL,
@@ -51,12 +54,16 @@ CREATE OR REPLACE TABLE public.ip_location (
 );
 
 CREATE OR REPLACE TABLE public.users_csv (
-	nombre VARCHAR(50) NOT NULL,
-	correo VARCHAR(50) NOT NULL,
-	antiguedad VARCHAR(10) NOT NULL,
-	plan VARCHAR(15) NOT NULL,
+	pais VARCHAR(2) NOT NULL,
+    plan VARCHAR(15) NOT NULL,
+    rowid VARCHAR(100),
+    correo VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,	
+	antiguedad VARCHAR(10) NOT NULL,	
 	costo_plan FLOAT NOT NULL,
 	usuario_id VARCHAR(100) NOT NULL,
-	pais VARCHAR(2) NOT NULL
+    _airbyte_ab_id VARCHAR(50),
+    _airbyte_emitted_at TIMESTAMP_NTZ
+	
         
 );

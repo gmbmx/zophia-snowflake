@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE ZOPHIAFLIX.PUBLIC.plan_change(
+CREATE OR REPLACE TRANSIENT TABLE ZOPHIAFLIX.PUBLIC.plan_change(
     plan_name VARCHAR(15),
     plan_cost FLOAT,
     product_name VARCHAR(60),
