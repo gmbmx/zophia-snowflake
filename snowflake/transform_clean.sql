@@ -1,13 +1,3 @@
-SELECT 
-    dispositivo,
-    CASE
-        WHEN regexp_count(dispositivo, 'iPhone|Android')>0 then 'Mobile'
-        WHEN regexp_count(dispositivo, 'Mozilla|Macintosh|Opera')>0 then 'Desktop'
-        WHEN contains(dispositivo, 'iPad') then 'Tablet'
-        ELSE 'Unknown'
-    END identificador    
-FROM zophiaflix_logs
-LIMIT 10;
 
 SELECT
         CAST(fecha as DATE) AS view_date,
@@ -17,6 +7,12 @@ SELECT
         CAST(flix_id AS INT) as zophiaflix_content_id,
         usuario_id as zophiaflix_user_id,
         dispositivo AS device,
+        CASE
+            WHEN regexp_count(dispositivo, 'iPhone|Android')>0 then 'Mobile'
+            WHEN regexp_count(dispositivo, 'Mozilla|Macintosh|Opera')>0 then 'Desktop'
+            WHEN contains(dispositivo, 'iPad') then 'Tablet'
+            ELSE 'Unknown'
+        END AS device_type
         ip as device_ip,
         tiempo_visto AS view_time_mins,
         _airbyte_ab_id AS airbyte_ab_id,
@@ -45,5 +41,8 @@ SELECT
         countryname as country_name,
         _airbyte_ab_id as airbyte_ab_id,
         _airbyte_emitted_at as airbyte_loaded_at
-  FROM ip_location LIMIT 10; 
+  FROM ip_location LIMIT 10;
+
+SELECT * FROM ZOPHIAFLIX_CATALOGO LIMIT 10;
+
   

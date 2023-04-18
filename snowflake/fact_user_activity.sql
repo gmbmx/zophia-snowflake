@@ -1,0 +1,21 @@
+CREATE OR REPLACE TABLE ZOPHIAFLIX.DWH.FACT_USER_ACTIVITY(
+    plan_id integer,
+    customer_id varchar(100),
+    catalog_id NUMBER(38,0) ,
+    watch_time_mins number(38,5),
+    content_type varchar(10),
+    title VARCHAR(100),
+    runtime FLOAT NOT NULL,
+    plan_name VARCHAR(15),
+    membership_start_date date,
+    user_country varchar(100),
+    user_region varchar(100),
+    user_timezone varchar(100),
+    watch_date date,
+    ip varchar(100),
+    ip_numeric integer,
+    device_type varchar(100),
+    os_type varchar(100),
+    CONSTRAINT fkey_1 FOREIGN KEY (plan_id) REFERENCES .proyecto_load.dim_plan (plan_id) ,
+    CONSTRAINT fkey_2 FOREIGN KEY (customer_id) REFERENCES yemartinez.proyecto_load.dim_customer (dim_customer_id)
+);

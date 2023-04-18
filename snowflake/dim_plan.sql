@@ -6,14 +6,14 @@ CREATE OR REPLACE TRANSIENT TABLE ZOPHIAFLIX.PUBLIC.plan_change(
     plan_date DATE
 );
 
-CREATE OR REPLACE TABLE ZOPHIAFLIX.PUBLIC.plan(
-    plan_sk VARCHAR(60),
+CREATE OR REPLACE TABLE ZOPHIAFLIX.DWH.DIM_PLAN(
+    plan_id VARCHAR(60),
     plan_name VARCHAR(15),
     plan_cost FLOAT,
     product_name VARCHAR(60),
 	country_code VARCHAR(2),
-    plan_date_start DATE,
-    plan_date_end DATE,
+    plan_start_date DATE,
+    plan_end_date DATE,
     current_plan_flag BOOLEAN
 );
 
